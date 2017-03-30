@@ -2,7 +2,7 @@ import pygame as pg
 from .. import setup
 from .. import constants as c
 
-class menu_option(object):
+class button(object):
     def __init__(self, size, text, text_color, position, normal_box, hl_box, hl_able=False):
         self.text = text
         self.highlight = False
