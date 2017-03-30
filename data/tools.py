@@ -1,4 +1,5 @@
 import pygame as pg
+from . import constants as c
 import os
 
 class Control(object):
@@ -7,7 +8,7 @@ class Control(object):
 		self.done = False
 		self.clock = pg.time.Clock()
 		self.caption = caption
-		self.fps = 60
+		self.fps = c.FPS
 		self.keys = pg.key.get_pressed()
 		self.state_dict = {}
 		self.state_name = None
@@ -23,14 +24,11 @@ class Control(object):
 			self.done = True
 		elif self.state.done:
 			self.flip_state()
-		self.state.update(self.screen, self.keys)
 
 	def flip_state(self):
 		previous, self.state_name = self.state_name, self.state.next
-		persist = self.state.cleanup()
 		self.state = self.state_dict[self.state_name]
 		self.state.previous = previous
-		self.state.startup(persist)
 
 	def event_loop(self):
 		self.events = pg.event.get()
@@ -38,13 +36,10 @@ class Control(object):
 		for event in self.events:
 			if event.type == pg.QUIT:
 				self.done = True
-			elif event.type == pg.KEYDOWN:
-				self.keys = pg.key.get_pressed()
-				self.toggle_show_fps(event.key)
-				self.state.get_event(event)
-			elif event.type == pg.KEYUP:
-				self.keys = pg.key.get_pressed()
-				self.state.get_event(event)
+			elif event.type in (pg.MOUSEMOTION, pg.MOUSEBUTTONUP, pg.MOUSEBUTTONDOWN):
+				self.mouse_state = pg.mouse.get_pressed()
+				self.mouse_pos = pg.mouse.get_pos()
+				self.state.update(self.mouse_state, self.mouse_pos)
 
 	def main(self):
 		while not self.done:
@@ -53,7 +48,7 @@ class Control(object):
 			pg.display.update()
 			self.clock.tick(self.fps)
 
-def load_all_gfx(directory, colorkey=(255,0,255), accept=('.png', 'jpg', 'bmp')):
+def load_all_gfx(directory, colorkey=(255,0,255), accept=('.png', '.jpg', '.bmp')):
     graphics = {}
     for pic in os.listdir(directory):
         name, ext = os.path.splitext(pic)
@@ -62,3 +57,11 @@ def load_all_gfx(directory, colorkey=(255,0,255), accept=('.png', 'jpg', 'bmp'))
             graphics[name] = img
 
     return graphics
+
+def load_all_fonts(directory, accept=('.ttf')):
+    fonts = {}
+    for font in os.listdir(directory):
+        name, ext = os.path.splitext(font)
+        if ext.lower() in accept:
+            fonts[name] = os.path.join(directory, font)
+    return fonts
