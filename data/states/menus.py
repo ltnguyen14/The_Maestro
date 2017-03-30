@@ -5,11 +5,6 @@ from data.components import menu_option
 
 class main_menu(object):
     def __init__(self):
-        self.done = False
-        self.quit = False
-        self.next = None
-        self.previous = None
-
         self.bg_image = setup.GFX['start_bg']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
@@ -28,6 +23,12 @@ class main_menu(object):
 
         self.surface = pg.display.get_surface()
         self.initialize()
+
+    def startup(self):
+        self.done = False
+        self.quit = False
+        self.next = None
+        self.previous = None
 
     def initialize(self):
         for button in self.buttons:
@@ -54,11 +55,6 @@ class main_menu(object):
 
 class main_menu_test(object):
     def __init__(self):
-        self.done = False
-        self.quit = False
-        self.next = None
-        self.previous = None
-
         self.bg_image = setup.GFX['start_bg']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
@@ -74,6 +70,12 @@ class main_menu_test(object):
 
         self.surface = pg.display.get_surface()
         self.initialize()
+
+    def startup(self):
+        self.done = False
+        self.quit = False
+        self.next = None
+        self.previous = None
 
     def initialize(self):
         for button in self.buttons:

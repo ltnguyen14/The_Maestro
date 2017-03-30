@@ -18,6 +18,7 @@ class Control(object):
 		self.state_dict = state_dict
 		self.state_name = start_state
 		self.state = self.state_dict[self.state_name]
+		self.state.startup()
 
 	def update(self):
 		if self.state.quit:
@@ -29,6 +30,7 @@ class Control(object):
 		previous, self.state_name = self.state_name, self.state.next
 		self.state = self.state_dict[self.state_name]
 		self.state.previous = previous
+		self.state.startup()
 
 	def event_loop(self):
 		self.events = pg.event.get()
