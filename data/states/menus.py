@@ -3,6 +3,8 @@ from .. import tools, setup
 from .. import constants as c
 from data.components import menu_option
 
+
+
 class main_menu(object):
     def __init__(self):
         self.bg_image = setup.GFX['start_bg']
