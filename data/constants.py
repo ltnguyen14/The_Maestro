@@ -1,5 +1,7 @@
 CAPTION = 'The Maestro'
-SCREEN_SIZE = (800, 600)
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
 FPS = 60
 
 #COLORS
@@ -21,4 +23,5 @@ TEAL = (0,128,128)
 NAVY = (0,0,128)
 
 #Button sizes
-menu_button_size = (300, 100)
+button_size = (300, 100)
+small_button_sz = (150, 50)

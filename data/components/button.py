@@ -3,7 +3,7 @@ from .. import setup
 from .. import constants as c
 
 class button(object):
-    def __init__(self, size, text, text_color, position, normal_box, hl_box, hl_able=False):
+    def __init__(self, size, text, text_color, position, normal_box, hl_box, hl_able=False, center=False):
         self.text = text
         self.highlight = False
         self.hl_able = hl_able
@@ -16,7 +16,10 @@ class button(object):
         self.normal_image = pg.transform.smoothscale(self.normal_image, size)
 
         self.rect = self.normal_image.get_rect()
-        self.rect.x, self.rect.y = position[0], position[1]
+        if not center:
+            self.rect.x, self.rect.y = position[0], position[1]
+        else:
+            self.rect.center = position
 
         self.normal_font = pg.font.Font(setup.FONTS['Aller_Rg'], 30)
         self.label = self.normal_font.render(self.text, 1, text_color)

@@ -8,18 +8,12 @@ class menu(object):
         self.bg_image = setup.GFX['start_bg']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
-        self.position_list = {'start button': (50,200),
-                                'option button': (50,320),
-                                'quit button': (50,440)}
+        self.position_list = {'start button': (0, c.SCREEN_HEIGHT - c.small_button_sz[1])}
 
-        self.start_button = button.button(c.menu_button_size, 'TEST', c.RED,
-                                            self.position_list['start button'], "rect_box", "white_box", True)
-        self.option_button = button.button(c.menu_button_size, 'OPTIONS', c.RED,
-                                            self.position_list['option button'], "rect_box", "white_box",True)
-        self.quit_button = button.button(c.menu_button_size, 'QUIT', c.OLIVE,
-                                            self.position_list['quit button'], "rect_box", "white_box", True)
+        self.start_button = button.button(c.small_button_sz, 'BACK', c.RED,
+                                            self.position_list['start button'], "rect_box", "rect_box_yellow", True)
 
-        self.buttons = (self.start_button, self.option_button, self.quit_button)
+        self.buttons = (self.start_button,)
 
         self.surface = pg.display.get_surface()
         self.initialize()
@@ -47,8 +41,6 @@ class menu(object):
                     button.draw()
             else:
                 button.draw()
-        if result == 'QUIT':
-            self.quit = True
-        elif result == 'START':
-            self.next = 'main_menu'
+        if result == 'BACK':
+            self.next = 'start_menu'
             self.done = True

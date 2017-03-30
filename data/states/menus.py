@@ -12,12 +12,12 @@ class start_menu(object):
                                 'option button': (50,320),
                                 'quit button': (50,440)}
 
-        self.start_button = button.button(c.menu_button_size, 'START', c.RED,
-                                            self.position_list['start button'], "rect_box", "white_box", True)
-        self.option_button = button.button(c.menu_button_size, 'OPTIONS', c.RED,
-                                            self.position_list['option button'], "rect_box", "white_box",True)
-        self.quit_button = button.button(c.menu_button_size, 'QUIT', c.OLIVE,
-                                            self.position_list['quit button'], "rect_box", "white_box", True)
+        self.start_button = button.button(c.button_size, 'START', c.RED,
+                                            self.position_list['start button'], "rect_box", "rect_box_yellow", True)
+        self.option_button = button.button(c.button_size, 'OPTIONS', c.RED,
+                                            self.position_list['option button'], "rect_box", "rect_box_yellow",True)
+        self.quit_button = button.button(c.button_size, 'QUIT', c.OLIVE,
+                                            self.position_list['quit button'], "rect_box", "rect_box_yellow", True)
 
         self.buttons = (self.start_button, self.option_button, self.quit_button)
 
@@ -61,13 +61,13 @@ class welcome_screen(object):
         self.bg_image = setup.GFX['start_bg']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
-        self.position_list = {'welcome message': (0,100),
+        self.position_list = {'welcome message': (c.SCREEN_WIDTH/2,c.SCREEN_HEIGHT/2),
                                 'next button': (500, 500)}
 
-        self.welcome_message = button.button(c.menu_button_size, 'WELCOME GUYS', c.RED,
-                                            self.position_list['welcome message'], "rect_box", "white_box", True)
-        self.next_button = button.button(c.menu_button_size, 'NEXT', c.GREEN,
-                                            self.position_list['next button'], "rect_box", "white_box", True)
+        self.welcome_message = button.button(c.button_size, 'WELCOME GUYS', c.RED,
+                                            self.position_list['welcome message'], "rect_box", "white_box", True, True)
+        self.next_button = button.button(c.button_size, 'NEXT', c.GREEN,
+                                            self.position_list['next button'], "rect_box", "rect_box_yellow", True)
 
         self.buttons = (self.welcome_message, self.next_button)
 
