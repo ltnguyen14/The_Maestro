@@ -1,0 +1,2 @@
+CAPTION = 'The Maestro'
+SCREEN_SIZE = (800, 600)
