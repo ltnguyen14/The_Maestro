@@ -2,9 +2,10 @@ import pygame as pg
 from .. import setup
 from .. import constants as c
 
-class selection_box(object):
-    def __init__(self, size, text, text_color, position, normal_box, hl_box, center=False, text_size=30):
-        self.text = text
+class menu(object):
+    def __init__(self, size, text_list, text_color, position, normal_box, hl_box, center=False, text_size=30):
+        self.text_list = text_list
+        self.index = 0
         self.highlight = False
         self.surface = pg.display.get_surface()
 
@@ -21,7 +22,7 @@ class selection_box(object):
             self.rect.center = position
 
         self.normal_font = pg.font.Font(setup.FONTS['Aller_Rg'], text_size)
-        self.label = self.normal_font.render(self.text, 1, text_color)
+        self.label = self.normal_font.render(self.text_list[self.index], 1, text_color)
         self.label_rect = self.label.get_rect()
         self.label_rect.center = self.rect.center
 
@@ -31,7 +32,7 @@ class selection_box(object):
     def update(self, mouse_state, mouse_pos):
         self.draw()
         if mouse_state[0]:
-            return self.text
+            return self.text_list[self.index]
 
     def draw(self):
         if self.highlight:

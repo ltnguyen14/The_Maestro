@@ -1,7 +1,7 @@
 import pygame as pg
 from .. import tools, setup
 from .. import constants as c
-from data.components import button, text_box
+from data.components import button, text_box, selection_box
 
 class menu(object):
     def __init__(self):
@@ -13,7 +13,7 @@ class menu(object):
                                 'quit button': (50,440),
                                 'title box': (c.SCREEN_WIDTH/2, 100)}
 
-        self.start_button = button.button(c.button_size, 'START', c.YELLOW,
+        self.start_button = selection_box.menu(c.button_size, ['START'], c.YELLOW,
                                             self.position_list['start button'], "rect_box", "rect_box_yellow")
         self.option_button = button.button(c.button_size, 'OPTIONS', c.YELLOW,
                                             self.position_list['option button'], "rect_box", "rect_box_yellow")
@@ -23,7 +23,7 @@ class menu(object):
         self.title_box = text_box.text_box(c.button_size, 'THE MAESTRO', c.TEAL,
                                             self.position_list['title box'], "white_box", True, 45)
 
-        self.buttons = ()
+        self.buttons = (self.start_button,)
 
         self.surface = pg.display.get_surface()
 
