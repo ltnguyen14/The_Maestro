@@ -20,8 +20,8 @@ class start_menu(object):
         self.quit_button = button.button(c.button_size, 'QUIT', c.OLIVE,
                                             self.position_list['quit button'], "rect_box", "rect_box_yellow")
 
-        self.title_box = text_box.text_box(c.button_size, 'THE MAESTRO', c.TEAL,
-                                            self.position_list['title box'], "white_box", True, 45)
+        self.title_box = text_box.text_box(c.button_size, 'THE MAESTRO', c.BLUE,
+                                            self.position_list['title box'], "blank", True, 50)
 
         self.buttons = (self.start_button, self.option_button, self.quit_button, self.title_box)
 
