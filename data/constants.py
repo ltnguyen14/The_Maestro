@@ -22,6 +22,13 @@ PURPLE = (128,0,128)
 TEAL = (0,128,128)
 NAVY = (0,0,128)
 
+#Text box
+text_box_offset = 10
 #Button sizes
 button_size = (300, 100)
 small_button_sz = (150, 50)
+
+#-------------TEXT CONTENT
+#WELCOME SCREEN
+WELCOME_MESS = "You are a 15-year-old boy who just joined your high school tennis team. Since you have been playing tennis in your dad's club for almost ten years, you feel pretty confident that you are good enough to become the #1 varsity player. You can't wait for the first practice where you plan to impress everybody in the team, especially the head coach."
+welcome_box_size = (500, 400)

@@ -2,7 +2,7 @@ import pygame as pg
 from .. import setup
 from .. import constants as c
 
-class button(object):
+class selection_box(object):
     def __init__(self, size, text, text_color, position, normal_box, hl_box, center=False, text_size=30):
         self.text = text
         self.highlight = False
