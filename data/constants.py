@@ -27,6 +27,7 @@ text_box_offset = 10
 #Button sizes
 button_size = (300, 100)
 small_button_sz = (150, 50)
+selection_sz = (350,40)
 
 #-------------TEXT CONTENT
 #WELCOME SCREEN

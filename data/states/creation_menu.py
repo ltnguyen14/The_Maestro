@@ -8,22 +8,44 @@ class menu(object):
         self.bg_image = setup.GFX['background_1']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
-        self.position_list = {'start button': (50,200),
-                                'option button': (50,320),
-                                'quit button': (50,440),
-                                'title box': (c.SCREEN_WIDTH/2, 100)}
+        self.position_list = {'height_input': (c.SCREEN_WIDTH/2,150),
+                                'weight_input': (c.SCREEN_WIDTH/2,250),
+                                'type_input': (c.SCREEN_WIDTH/2,350),
 
-        self.start_button = selection_box.menu(c.button_size, ['START'], c.YELLOW,
-                                            self.position_list['start button'], "rect_box", "rect_box_yellow")
-        self.option_button = button.button(c.button_size, 'OPTIONS', c.YELLOW,
-                                            self.position_list['option button'], "rect_box", "rect_box_yellow")
-        self.quit_button = button.button(c.button_size, 'QUIT', c.OLIVE,
-                                            self.position_list['quit button'], "rect_box", "rect_box_yellow")
+                                'height_label': (c.SCREEN_WIDTH/2,200),
+                                'weight_label': (c.SCREEN_WIDTH/2,300),
+                                'type_label': (c.SCREEN_WIDTH/2,400),
 
-        self.title_box = text_box.text_box(c.button_size, 'THE MAESTRO', c.TEAL,
-                                            self.position_list['title box'], "white_box", True, 45)
+                                'next_button': (c.SCREEN_WIDTH - 80, c.SCREEN_HEIGHT - 30),
+                                'back': (80, c.SCREEN_HEIGHT - 30),
+                                'title' : (c.SCREEN_WIDTH/2, 50)}
 
-        self.buttons = (self.start_button,)
+        self.title = button.button(c.button_size, "WHO ARE YOU", c.YELLOW,
+                                        self.position_list['title'], "blank", "blank", center=True)
+
+        self.back_button = button.button(c.small_button_sz, "BACK", c.YELLOW,
+                                        self.position_list['back'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+        self.next_button = button.button(c.small_button_sz, "NEXT", c.YELLOW,
+                                        self.position_list['next_button'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+
+        self.height_input = selection_box.menu(c.selection_sz, ['Short','Medium','Tall'], c.YELLOW,
+                                            self.position_list['height_input'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+        self.height_label = button.button(c.button_size, "HEIGHT", c.RED,
+                                        self.position_list['height_label'], "blank", "blank", center=True, text_size = 20)
+
+        self.weight_input = selection_box.menu(c.selection_sz, ['Lean','Medium','Stocky'], c.YELLOW,
+                                            self.position_list['weight_input'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+        self.weight_label = button.button(c.button_size, "WEIGHT", c.RED,
+                                        self.position_list['weight_label'], "blank", "blank", center=True, text_size = 20)
+
+        self.type_input = selection_box.menu(c.selection_sz, ['Agile','Mixed','Powerful'], c.YELLOW,
+                                            self.position_list['type_input'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+        self.type_label = button.button(c.button_size, "PLAY TYPE", c.RED,
+                                        self.position_list['type_label'], "blank", "blank", center=True, text_size = 20)
+
+        self.buttons = (self.height_input, self.weight_input, self.type_input,
+                            self.height_label, self.weight_label, self.type_label,
+                            self.title, self.back_button, self.next_button)
 
         self.surface = pg.display.get_surface()
 
@@ -35,23 +57,17 @@ class menu(object):
 
     def update(self, mouse_state, mouse_pos):
         self.surface.blit(self.bg_image, (0,0))
-        result = None
         #Update buttons
         for button in self.buttons:
             if button.rect.collidepoint(mouse_pos):
                 button.highlight = True
                 result = button.update(mouse_state, mouse_pos)
+                self.check_mouse_click(result)
             else:
                 button.highlight = False
                 button.draw()
-        self.check_mouse_click(result)
 
     def check_mouse_click(self, result):
-        if result == 'QUIT':
-            self.quit = True
-        elif result == 'START':
+        if result == 'BACK':
             self.next = 'welcome_screen'
-            self.done = True
-        elif result == 'OPTIONS':
-            self.next = 'option_menu'
             self.done = True

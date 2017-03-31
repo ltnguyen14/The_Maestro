@@ -6,6 +6,7 @@ class menu(object):
     def __init__(self, size, text_list, text_color, position, normal_box, hl_box, center=False, text_size=30):
         self.text_list = text_list
         self.index = 0
+        self.text_color = text_color
         self.highlight = False
         self.surface = pg.display.get_surface()
 
@@ -21,18 +22,27 @@ class menu(object):
         else:
             self.rect.center = position
 
-        self.normal_font = pg.font.Font(setup.FONTS['Aller_Rg'], text_size)
-        self.label = self.normal_font.render(self.text_list[self.index], 1, text_color)
+        self.normal_font = pg.font.Font(setup.FONTS['AllerDisplay'], text_size)
+
+    def blit_text(self):
+        self.label = self.normal_font.render(self.text_list[self.index], 1, self.text_color)
         self.label_rect = self.label.get_rect()
         self.label_rect.center = self.rect.center
 
-    def blit_text(self):
         self.surface.blit(self.label, self.label_rect)
 
     def update(self, mouse_state, mouse_pos):
         self.draw()
         if mouse_state[0]:
-            return self.text_list[self.index]
+            if mouse_pos[0] < self.rect.x + self.rect.width/4:
+                self.index -= 1
+                self.index = self.index % len(self.text_list)
+                return self.text_list[self.index]
+            if mouse_pos[0] > self.rect.x + 3*self.rect.width/4:
+                self.index += 1
+                self.index = self.index % len(self.text_list)
+                return self.text_list[self.index]
+
 
     def draw(self):
         if self.highlight:
