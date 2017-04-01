@@ -29,17 +29,17 @@ class menu(object):
                                         self.position_list['next_button'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
 
         self.height_input = selection_box.menu(c.selection_sz, ['Short','Medium','Tall'], c.YELLOW,
-                                            self.position_list['height_input'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+                                            self.position_list['height_input'], "selection_blue", "selection_yellow", center=True, text_size = 20)
         self.height_label = button.button(c.button_size, "HEIGHT", c.RED,
                                         self.position_list['height_label'], "blank", "blank", center=True, text_size = 20)
 
         self.weight_input = selection_box.menu(c.selection_sz, ['Lean','Medium','Stocky'], c.YELLOW,
-                                            self.position_list['weight_input'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+                                            self.position_list['weight_input'], "selection_blue", "selection_yellow", center=True, text_size = 20)
         self.weight_label = button.button(c.button_size, "WEIGHT", c.RED,
                                         self.position_list['weight_label'], "blank", "blank", center=True, text_size = 20)
 
         self.type_input = selection_box.menu(c.selection_sz, ['Agile','Mixed','Powerful'], c.YELLOW,
-                                            self.position_list['type_input'], "rect_box", "rect_box_yellow", center=True, text_size = 20)
+                                            self.position_list['type_input'], "selection_blue", "selection_yellow", center=True, text_size = 20)
         self.type_label = button.button(c.button_size, "PLAY TYPE", c.RED,
                                         self.position_list['type_label'], "blank", "blank", center=True, text_size = 20)
 

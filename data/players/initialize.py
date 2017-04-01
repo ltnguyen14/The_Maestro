@@ -46,4 +46,4 @@ bob = {'name': 'Bob',
         'popularity': None
         }
 ###############################
-player_list = {'adam':adam, 'bob': bob}
+player_data = {'adam':adam, 'bob': bob}
