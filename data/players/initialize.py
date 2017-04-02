@@ -36,11 +36,13 @@ bob_mental = {
 }
 ###############################
 adam = {'name': 'Adam',
+        'age': 16, 
         'stats': {'skill': adam_skill, 'physical': adam_physical, 'mental': adam_mental},
         'level': 'high school',
         'popularity': None
         }
 bob = {'name': 'Bob',
+        'age' : 17,
         'stats': {'skill': bob_skill, 'physical': bob_physical, 'mental': bob_mental},
         'level': 'high school',
         'popularity': None
