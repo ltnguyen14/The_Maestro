@@ -29,6 +29,9 @@ button_size = (300, 100)
 small_button_sz = (150, 50)
 selection_sz = (350,40)
 
+#File names
+hs_player_file = 'hs_players.txt'
+
 #-------------TEXT CONTENT
 #WELCOME SCREEN
 WELCOME_MESS = "You are a 15-year-old boy who just joined your high school tennis team. Since you have been playing tennis in your dad's club for almost ten years, you feel pretty confident that you are good enough to become the #1 varsity player. You can't wait for the first practice where you plan to impress everybody in the team, especially the head coach."

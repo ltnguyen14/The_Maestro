@@ -2,9 +2,11 @@ import pygame as pg
 from .. import tools, setup
 from .. import constants as c
 from data.components import button, text_box, selection_box
+from data.players import initialize
 
 class menu(object):
     def __init__(self):
+        initialize.run()
         self.bg_image = setup.GFX['background_1']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
@@ -70,4 +72,7 @@ class menu(object):
     def check_mouse_click(self, result):
         if result == 'BACK':
             self.next = 'welcome_screen'
+            self.done = True
+        elif result == 'NEXT':
+            self.next = ''
             self.done = True
