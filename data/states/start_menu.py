@@ -5,6 +5,7 @@ from data.components import button, text_box
 
 class start_menu(object):
     def __init__(self):
+        self.pass_arg = None
         self.bg_image = setup.GFX['start_bg_1']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 

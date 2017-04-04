@@ -7,6 +7,7 @@ from data.players import initialize
 class menu(object):
     def __init__(self):
         initialize.run()
+        self.pass_arg = None
         self.bg_image = setup.GFX['background_1']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
@@ -22,7 +23,7 @@ class menu(object):
                                 'back': (80, c.SCREEN_HEIGHT - 30),
                                 'title' : (c.SCREEN_WIDTH/2, 50)}
 
-        self.title = button.button(c.button_size, "WHO ARE YOU", c.YELLOW,
+        self.title = button.button(c.button_size, "YOUR BODY TYPE", c.BLUE,
                                         self.position_list['title'], "blank", "blank", center=True)
 
         self.back_button = button.button(c.small_button_sz, "BACK", c.YELLOW,
@@ -74,5 +75,6 @@ class menu(object):
             self.next = 'welcome_screen'
             self.done = True
         elif result == 'NEXT':
-            self.next = ''
+            self.next = 'player_info'
+            self.pass_arg = 'player'
             self.done = True
