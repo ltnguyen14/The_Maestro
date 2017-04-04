@@ -28,6 +28,7 @@ text_box_offset = 10
 button_size = (300, 100)
 small_button_sz = (150, 50)
 selection_sz = (350,40)
+info_button_sz = (250, 30)
 
 #File names
 hs_player_file = 'hs_players.txt'

@@ -13,11 +13,13 @@ class Control(object):
 		self.state_dict = {}
 		self.state_name = None
 		self.state = None
+		self.pass_arg = None
 
 	def setup_states(self, state_dict, start_state):
 		self.state_dict = state_dict
 		self.state_name = start_state
 		self.state = self.state_dict[self.state_name]
+		self.state = self.state()
 		self.state.startup()
 
 	def update(self):
@@ -27,8 +29,13 @@ class Control(object):
 			self.flip_state()
 
 	def flip_state(self):
+		self.pass_arg = self.state.pass_arg
 		previous, self.state_name = self.state_name, self.state.next
 		self.state = self.state_dict[self.state_name]
+		if self.pass_arg != None:
+			self.state = self.state(self.pass_arg)
+		else:
+			self.state = self.state()
 		self.state.previous = previous
 		self.state.startup()
 
