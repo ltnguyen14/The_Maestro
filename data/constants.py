@@ -31,7 +31,7 @@ selection_sz = (350,40)
 info_button_sz = (250, 30)
 
 #File names
-hs_player_file = 'hs_players.txt'
+player_file = 'players.p'
 
 #-------------TEXT CONTENT
 #WELCOME SCREEN

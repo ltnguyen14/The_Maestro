@@ -1,20 +1,20 @@
 import pygame as pg
 from .. import tools, setup
 from .. import constants as c
-from data.components import button, text_box, selection_box
+from data.components import button, text_box, selection_box, tennis_player
 from data.players import initialize
 
 class menu(object):
     def __init__(self, input_arg):
         initialize.run()
-        self.input_arg = input_arg
+        self.player = tennis_player.tennis_player(input_arg)
         self.pass_arg = None
         self.bg_image = setup.GFX['background_1']
         self.bg_image = pg.transform.smoothscale(self.bg_image, c.SCREEN_SIZE)
 
         self.position_list = {'title' : (c.SCREEN_WIDTH/2, 50)}
 
-        self.title = button.button(c.info_button_sz, self.input_arg, c.BLUE,
+        self.title = button.button(c.info_button_sz, self.player.level, c.WHITE,
                                         self.position_list['title'], "rect_box_grey", "rect_box_grey", center=True, text_size = 20)
 
         self.buttons = (self.title,)

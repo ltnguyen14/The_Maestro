@@ -80,7 +80,7 @@ def run():
     ###############################
     hs_player_data = {'player':player, 'adam':adam, 'bob': bob}
 
-    hs_file_obj = open(os.path.join("data", "players", c.hs_player_file), "wb")
+    hs_file_obj = open(os.path.join("data", "players", c.player_file), "wb")
     pickle.dump(hs_player_data, hs_file_obj)
 
     hs_file_obj.close()
