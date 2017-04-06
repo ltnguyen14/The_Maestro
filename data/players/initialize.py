@@ -4,9 +4,10 @@ from .. import constants as c
 def run():
     ############################### PLAYER
     player_skill = {
-        'Forehand':40,
+        'Forehand':30,
         'Backhand':30,
         'Volley':30,
+        'Serve':30
     }
     player_physical = {
         'Power':30,
@@ -26,6 +27,7 @@ def run():
         'Forehand':30,
         'Backhand':30,
         'Volley':30,
+        'Serve':30
     }
     adam_physical = {
         'Power':30,
@@ -41,9 +43,10 @@ def run():
     }
     ############################### BOB
     bob_skill = {
-        'Forehand':40,
+        'Forehand':30,
         'Backhand':30,
         'Volley':30,
+        'Serve':30
     }
     bob_physical = {
         'Power':30,
@@ -78,12 +81,12 @@ def run():
             'popularity': None
             }
     ###############################
-    hs_player_data = {'player':player, 'adam':adam, 'bob': bob}
+    player_data = {'player':player, 'adam':adam, 'bob': bob}
 
-    hs_file_obj = open(os.path.join("data", "players", c.player_file), "wb")
-    pickle.dump(hs_player_data, hs_file_obj)
+    file_obj = open(os.path.join("data", "players", c.player_file), "wb")
+    pickle.dump(player_data, file_obj)
 
-    hs_file_obj.close()
+    file_obj.close()
 
 if __name__ == '__main__':
     run()

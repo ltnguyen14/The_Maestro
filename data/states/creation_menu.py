@@ -1,7 +1,7 @@
 import pygame as pg
 from .. import tools, setup
 from .. import constants as c
-from data.components import button, text_box, selection_box
+from data.components import button, text_box, selection_box, tennis_player
 from data.players import initialize
 
 class menu(object):
@@ -41,7 +41,7 @@ class menu(object):
         self.weight_label = button.button(c.button_size, "WEIGHT", c.RED,
                                         self.position_list['weight_label'], "blank", "blank", center=True, text_size = 20)
 
-        self.type_input = selection_box.menu(c.selection_sz, ['Agile','Mixed','Powerful'], c.YELLOW,
+        self.type_input = selection_box.menu(c.selection_sz, ['Agile','Nimble Feet','Powerful'], c.YELLOW,
                                             self.position_list['type_input'], "selection_blue", "selection_yellow", center=True, text_size = 20)
         self.type_label = button.button(c.button_size, "PLAY TYPE", c.RED,
                                         self.position_list['type_label'], "blank", "blank", center=True, text_size = 20)
@@ -70,6 +70,35 @@ class menu(object):
                 button.highlight = False
                 button.draw()
 
+    def update_player_stats(self):
+        self.player = tennis_player.tennis_player('player')
+        self.height_input, self.weight_input, self.type_input
+        #Height
+        if self.height_input.value == 'Short':
+            self.player.stats['skill']['Serve'] -= 5
+            self.player.stats['physical']['Acceleration'] += 5
+        elif self.height_input.value == 'Tall':
+            self.player.stats['skill']['Serve'] += 5
+            self.player.stats['physical']['Acceleration'] -= 5
+        #Weight
+        if self.weight_input.value == 'Lean':
+            self.player.stats['skill']['Serve'] += 5
+            self.player.stats['physical']['Power'] -= 5
+        elif self.weight_input.value == 'Stocky':
+            self.player.stats['physical']['Top Speed'] -= 5
+            self.player.stats['physical']['Power'] += 5
+        #Type
+        if self.type_input.value == 'Agile':
+            self.player.stats['physical']['Stamina'] += 5
+            self.player.stats['physical']['Reflexes'] += 5
+        elif self.type_input.value == 'Nimble Feet':
+            self.player.stats['physical']['Top Speed'] += 5
+            self.player.stats['physical']['Acceleration'] += 5
+        elif self.type_input.value == 'Powerful':
+            self.player.stats['physical']['Power'] += 10
+
+        self.player.store()
+
     def check_mouse_click(self, result):
         if result == 'BACK':
             self.next = 'welcome_screen'
@@ -77,4 +106,5 @@ class menu(object):
         elif result == 'NEXT':
             self.next = 'player_info'
             self.pass_arg = 'player'
+            self.update_player_stats()
             self.done = True

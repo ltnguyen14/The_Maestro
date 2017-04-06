@@ -37,3 +37,9 @@ player_file = 'players.p'
 #WELCOME SCREEN
 WELCOME_MESS = "You are a 15-year-old boy who just joined your high school tennis team. Since you have been playing tennis in your dad's club for almost ten years, you feel pretty confident that you are good enough to become the #1 varsity player. You can't wait for the first practice where you plan to impress everybody in the team, especially the head coach."
 welcome_box_size = (500, 400)
+
+#INFO MENU
+title_button = (265, 40)
+attributes_box = (265, 200)
+info_box = (265, 130)
+attribute_small = (255, 25)

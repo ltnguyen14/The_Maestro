@@ -23,6 +23,7 @@ class menu(object):
             self.rect.center = position
 
         self.normal_font = pg.font.Font(setup.FONTS['AllerDisplay'], text_size)
+        self.value = self.text_list[self.index]
 
     def blit_text(self):
         self.label = self.normal_font.render(self.text_list[self.index], 1, self.text_color)
@@ -37,11 +38,13 @@ class menu(object):
             if mouse_pos[0] < self.rect.x + self.rect.width/4:
                 self.index -= 1
                 self.index = self.index % len(self.text_list)
-                return self.text_list[self.index]
+                self.value = self.text_list[self.index]
+                return self.value
             if mouse_pos[0] > self.rect.x + 3*self.rect.width/4:
                 self.index += 1
                 self.index = self.index % len(self.text_list)
-                return self.text_list[self.index]
+                self.value = self.text_list[self.index]
+                return self.value
 
 
     def draw(self):
