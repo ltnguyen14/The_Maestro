@@ -87,3 +87,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+data/players/players.p
